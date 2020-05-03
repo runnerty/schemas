@@ -1,0 +1,8 @@
+{
+    "$schema": "../src/plan_chains_link.json",
+    "chains": [
+        {
+            "chain_path": ""
+        }
+    ]
+}

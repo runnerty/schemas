@@ -1,0 +1,9 @@
+{
+    "$schema": "../src/config.json",
+    "config": {
+        "general": {},
+        "executors": [],
+        "notifiers": [],
+        "triggers": []
+    }
+}

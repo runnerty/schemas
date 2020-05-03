@@ -1,0 +1,20 @@
+{
+    "$schema": "../src/plan.json",
+    "chains":[
+        {
+            "id": "",
+            "name": "",
+            "processes": [
+                {
+                    "name": "",
+                    "id": "",
+                    "exec": {
+                        "id": "",
+                        "command": ""
+                    }
+
+                }
+            ]
+        }
+    ]
+}
