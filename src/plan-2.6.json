@@ -3,6 +3,7 @@
   "definitions": {
     "depend_process": {
       "type": "object",
+      "description": "Declaration of dependencies with other process",
       "properties": {
         "$and": {
           "type": "array",
@@ -50,6 +51,7 @@
       "properties": {
         "on_start": {
           "type": "array",
+          "description": "Notifications at the start of the process",
           "items": {
             "type": "object",
             "required": [
@@ -64,6 +66,7 @@
         },
         "on_end": {
           "type": "array",
+          "description": "Notifications at the end of the process",
           "items": {
             "type": "object",
             "required": [
@@ -80,6 +83,7 @@
           "type": "array",
           "items": {
             "type": "object",
+            "description": "Notifications when the process fails",
             "required": [
               "id"
             ],
@@ -92,6 +96,7 @@
         },
         "on_retry": {
           "type": "array",
+          "description": "Notifications when the process retry",
           "items": {
             "type": "object",
             "required": [
@@ -106,6 +111,7 @@
         },
         "on_queue": {
           "type": "array",
+          "description": "Notifications when the process is added to the queue",
           "items": {
             "type": "object",
             "required": [
@@ -120,6 +126,7 @@
         },
         "on_timeout": {
           "type": "array",
+          "description": "Notifications when the process exceeds the maximum time for execution",
           "items": {
             "type": "object",
             "required": [
@@ -134,6 +141,7 @@
         },
         "on_waiting_dependencies": {
           "type": "array",
+          "description": "Notifications when waiting for dependency with another process",
           "items": {
             "type": "object",
             "required": [
@@ -152,10 +160,12 @@
       "oneOf": [
         {
           "type": "string",
-          "enum": ["abort", "continue"]
+          "enum": ["abort", "continue"],
+          "description": "Action to be performed by the chain in case the process fails"
         },
         {
           "type": "object",
+          "description": "Action to be performed by the chain in case the process fails",
           "required": [
             "action"
           ],
@@ -175,6 +185,7 @@
   ],
   "properties": {
     "chains": {
+      "title": "Chain",
       "type": "array",
       "items": {
         "type": "object",
@@ -185,34 +196,42 @@
         ],
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "description": "Unique identifier of the chain"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Identifying name of the chain"
           },
           "execId": {
             "type": "string"
           },
           "queue": {
-            "type": "string"
+            "type": "string",
+            "description": "Queue identifier to subscribe to the chain"
           },
           "priority": {
-            "type": "number"
+            "type": "number",
+            "description": "Chain priority"
           },
           "input": {
-            "type": "array"
+            "type": "array",
+            "description": "Input data mapping interface"
           },
           "custom_values": {
-            "type": "object"
+            "type": "object",
+            "description": "Custom data (can be overwritten on command line)"
           },
           "retries": {
-            "type": "number"
+            "type": "number",
+            "description": "Number of retries before failing"
           },
           "retry_delay": {
             "type": [
               "number",
               "string"
-            ]
+            ],
+            "description": "Delay time between each retry"
           },
           "triggers": {
             "type": "array",
@@ -237,7 +256,8 @@
             "type": [
               "array",
               "object"
-            ]
+            ],
+            "description": "Declaration of dependencies with other chains"
           },
           "notifications": {
             "type": "object",
@@ -258,6 +278,7 @@
               },
               "on_end": {
                 "type": "array",
+                "description": "Notifications at the end of the chain",
                 "items": {
                   "type": "object",
                   "required": [
@@ -272,6 +293,7 @@
               },
               "on_fail": {
                 "type": "array",
+                "description": "Notifications when the chain fails",
                 "items": {
                   "type": "object",
                   "required": [
@@ -286,6 +308,7 @@
               },
               "on_retry": {
                 "type": "array",
+                "description": "Notifications when the chain retry",
                 "items": {
                   "type": "object",
                   "required": [
@@ -300,6 +323,7 @@
               },
               "on_waiting_dependencies": {
                 "type": "array",
+                "description": "Notifications when waiting for dependency with another chain",
                 "items": {
                   "type": "object",
                   "required": [
@@ -332,6 +356,7 @@
             }
           },
           "processes": {
+            "title": "Process",
             "type": "array",
             "items": {
               "type": "object",
@@ -342,15 +367,18 @@
               ],
               "properties": {
                 "id": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Unique identifier of a process"
                 },
                 "name": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Identifying name of the process"
                 },
                 "depends_process": {
                   "anyOf": [
                     {
-                      "type": "string"
+                      "type": "string",
+                      "description": "Declaration of dependencies with other process"
                     },
                     {
                       "type": "array",
@@ -364,10 +392,12 @@
                   ]
                 },
                 "queue": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Queue identifier to subscribe to the process"
                 },
                 "priority": {
-                  "type": "number"
+                  "type": "number",
+                  "description": "Process priority"
                 },
                 "exec": {
                   "type": "object",
@@ -387,19 +417,22 @@
                   }
                 },
                 "retries": {
-                  "type": "number"
+                  "type": "number",
+                  "description": "Number of retries before failing"
                 },
                 "retry_delay": {
                   "type": [
                     "number",
                     "string"
-                  ]
+                  ],
+                  "description": "Delay time between each retry"
                 },
                 "notificate_only_last_fail": {
                   "type": "boolean"
                 },
                 "timeout": {
                   "type": "object",
+                  "description": "Maximum waiting time for the completion of a process",
                   "required": [
                     "delay"
                   ],
@@ -423,6 +456,7 @@
                 },
                 "output_share": {
                   "type": "array",
+                  "description": "Shared output data mapping interface",
                   "items": {
                     "type": "object",
                     "required": [

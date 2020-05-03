@@ -1,6 +1,6 @@
 {
     "$schema": "../src/plan-2.6.json",
-    "chains":[
+    "chains": [
         {
             "id": "",
             "name": "",
