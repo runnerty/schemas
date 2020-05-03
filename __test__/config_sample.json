@@ -1,5 +1,5 @@
 {
-    "$schema": "../src/config.json",
+    "$schema": "../src/config-2.6.json",
     "config": {
         "general": {},
         "executors": [],

@@ -1,5 +1,5 @@
 {
-    "$schema": "../src/plan_chains_link.json",
+    "$schema": "../src/plan_chains_link-2.6.json",
     "chains": [
         {
             "chain_path": ""
