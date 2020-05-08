@@ -153,7 +153,7 @@
       "oneOf": [
         {
           "type": "string",
-          "enum": ["abort", "continue"]
+          "enum": ["abort", "continue", "retry"]
         },
         {
           "type": "object",
@@ -161,7 +161,7 @@
           "properties": {
             "action": {
               "type": "string",
-              "enum": ["abort", "continue", "end"]
+              "enum": ["abort", "continue", "retry", "end"]
             }
           }
         }
