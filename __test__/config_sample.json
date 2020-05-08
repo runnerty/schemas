@@ -1,9 +1,7 @@
 {
-    "$schema": "../src/config-2.6.json",
-    "config": {
-        "general": {},
-        "executors": [],
-        "notifiers": [],
-        "triggers": []
-    }
+  "$schema": "../src/config-2.6.json",
+  "general": {},
+  "executors": [],
+  "notifiers": [],
+  "triggers": []
 }
