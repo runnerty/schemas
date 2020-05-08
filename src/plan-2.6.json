@@ -160,7 +160,7 @@
       "oneOf": [
         {
           "type": "string",
-          "enum": ["abort", "continue"],
+          "enum": ["abort", "continue", "retry"],
           "description": "Action to be performed by the chain in case the process fails"
         },
         {
@@ -172,7 +172,7 @@
           "properties": {
             "action": {
               "type": "string",
-              "enum": ["abort", "continue","end"]
+              "enum": ["abort", "continue", "retry", "end"]
             }
           }
         }
