@@ -1,20 +1,19 @@
 {
-    "$schema": "../src/plan-2.6.json",
-    "chains": [
+  "$schema": "../src/plan-2.6.json",
+  "chains": [
+    {
+      "id": "",
+      "name": "",
+      "processes": [
         {
+          "name": "",
+          "id": "",
+          "exec": {
             "id": "",
-            "name": "",
-            "processes": [
-                {
-                    "name": "",
-                    "id": "",
-                    "exec": {
-                        "id": "",
-                        "command": ""
-                    }
-
-                }
-            ]
+            "command": ""
+          }
         }
-    ]
+      ]
+    }
+  ]
 }
