@@ -1,0 +1,9 @@
+{
+    "$schema": "../src/process-2.6.json",
+    "id": "ID_PROCESS",
+    "name": "NAME",
+    "exec": {
+        "id": "TEST",
+        "command": ""
+    }
+}

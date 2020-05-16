@@ -13,19 +13,3 @@
         }
     ]
 }
-
-{
-    "$schema": "https://github.com/runnerty/schemas/blob/master/src/chain-2.6.0.json",
-    "id": "",
-    "name": "",
-    "processes":[
-        {
-            "id": "",
-            "name": "",
-            "depends_process":"ssss",
-            "exec": {
-                "id": "ddddd"
-            }
-        }
-    ]
-}
