@@ -10,7 +10,7 @@
         "properties": {
           "chain_path": {
             "type": "string",
-            "description":"Path to the chain file"
+            "description": "Path to the chain file"
           }
         }
       }
