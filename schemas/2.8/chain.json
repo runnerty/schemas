@@ -1,0 +1,170 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "notifications_chain": {
+      "type": "object",
+      "properties": {
+        "on_start": {
+          "type": "array",
+          "description": "Notifications at the start of the chain",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_end": {
+          "type": "array",
+          "description": "Notifications at the end of the chain",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_fail": {
+          "type": "array",
+          "description": "Notifications when the chain fails",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_retry": {
+          "type": "array",
+          "description": "Notifications when the chain retry",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_waiting_dependencies": {
+          "type": "array",
+          "description": "Notifications when waiting for dependency with another chain",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": ["id", "name", "processes"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the chain"
+    },
+    "name": {
+      "type": "string",
+      "description": "Identifying name of the chain"
+    },
+    "execId": {
+      "type": "string"
+    },
+    "queue": {
+      "type": "string",
+      "description": "Queue identifier to subscribe to the chain"
+    },
+    "priority": {
+      "type": "number",
+      "description": "Chain priority"
+    },
+    "disable": {
+      "type": "boolean",
+      "description": "You can enable and disable a chain with this flag"
+    },
+    "abort_iteration_serie_on_error": {
+      "type": "string",
+      "description": "For use in iterable chains, default false. When a process within the chain fail it stops the following cycles of the iterable chain"
+    },
+    "input": {
+      "type": "array",
+      "description": "Input data mapping interface"
+    },
+    "custom_values": {
+      "type": "object",
+      "description": "Custom data (can be overwritten on command line)"
+    },
+    "retries": {
+      "type": "number",
+      "description": "Number of retries before failing"
+    },
+    "retry_delay": {
+      "type": ["number", "string"],
+      "description": "Delay time between each retry"
+    },
+    "triggers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "calendars": {
+            "type": "object",
+            "properties": {
+              "enable": {
+                "type": "string"
+              },
+              "disable": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "depends_chains": {
+      "type": ["array", "object"],
+      "description": "Declaration of dependencies with other chains"
+    },
+    "notifications": { "$ref": "#/definitions/notifications_chain" },
+    "defaults_processes": {
+      "type": "object",
+      "description": "A set common defaults attributes for all proccesses of the chain",
+      "properties": {
+        "notifications": {
+          "$ref": "./process.json#/definitions/notifications_process"
+        },
+        "chain_action_on_fail": {
+          "$ref": "./process.json#/definitions/chain_action_on_fail_process"
+        },
+        "ignore_in_final_chain_status": {
+          "type": "boolean"
+        },
+        "output": {
+          "$ref": "./process.json#/definitions/output_process"
+        }
+      }
+    },
+    "processes": {
+      "type": "array",
+      "items": {
+        "$ref": "./process.json"
+      }
+    }
+  }
+}
