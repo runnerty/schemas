@@ -7,7 +7,14 @@
       "title": "Chain",
       "type": "array",
       "items": {
-        "$ref": "./chain-2.6.json"
+        "anyOf": [
+          {
+            "$ref": "./chain-2.6.json"
+          },
+          {
+            "$ref": "./chain_link-2.6.json"
+          }
+        ]
       }
     }
   }
