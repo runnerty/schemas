@@ -83,6 +83,9 @@
       "type": "string",
       "description": "Identifying name of the chain"
     },
+    "namespace": {
+      "type": "string"
+    },
     "execId": {
       "type": "string"
     },
@@ -164,6 +167,57 @@
       "type": "array",
       "items": {
         "$ref": "./process.json"
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        },
+        "criticality": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "contacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "fail_comments": {
+          "type": "string"
+        },
+        "relaunchable": {
+          "type": "boolean"
+        },
+        "input_keys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     }
   }
