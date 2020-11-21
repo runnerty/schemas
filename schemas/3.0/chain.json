@@ -129,10 +129,10 @@
           "calendars": {
             "type": "object",
             "properties": {
-              "enable": {
+              "allow": {
                 "type": "string"
               },
-              "disable": {
+              "disallow": {
                 "type": "string"
               }
             }
