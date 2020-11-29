@@ -102,7 +102,7 @@
       "description": "You can enable and disable a chain with this flag"
     },
     "abort_iteration_serie_on_error": {
-      "type": "string",
+      "type": "boolean",
       "description": "For use in iterable chains, default false. When a process within the chain fail it stops the following cycles of the iterable chain"
     },
     "input": {
@@ -139,6 +139,14 @@
           }
         }
       }
+    },
+    "iterable": {
+      "type": "string",
+      "enum": ["serie", "parallel"]
+    },
+    "ignore_on_concurrence": {
+      "type": "boolean",
+      "description": "if it is already in the queue, it is not included in the queue again. Default true. False if iterable is true."
     },
     "depends_chains": {
       "type": ["array", "object"],
