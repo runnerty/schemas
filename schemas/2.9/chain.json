@@ -83,9 +83,6 @@
       "type": "string",
       "description": "Identifying name of the chain"
     },
-    "namespace": {
-      "type": "string"
-    },
     "execId": {
       "type": "string"
     },
@@ -102,7 +99,7 @@
       "description": "You can enable and disable a chain with this flag"
     },
     "abort_iteration_serie_on_error": {
-      "type": "boolean",
+      "type": "string",
       "description": "For use in iterable chains, default false. When a process within the chain fail it stops the following cycles of the iterable chain"
     },
     "input": {
@@ -129,24 +126,16 @@
           "calendars": {
             "type": "object",
             "properties": {
-              "allow": {
+              "enable": {
                 "type": "string"
               },
-              "disallow": {
+              "disable": {
                 "type": "string"
               }
             }
           }
         }
       }
-    },
-    "iterable": {
-      "type": "string",
-      "enum": ["serie", "parallel"]
-    },
-    "ignore_on_concurrence": {
-      "type": "boolean",
-      "description": "if it is already in the queue, it is not included in the queue again. Default true. False if iterable is true."
     },
     "depends_chains": {
       "type": ["array", "object"],
@@ -175,60 +164,6 @@
       "type": "array",
       "items": {
         "$ref": "./process.json"
-      }
-    },
-    "meta": {
-      "type": "object",
-      "properties": {
-        "author": {
-          "type": "string"
-        },
-        "team": {
-          "type": "string"
-        },
-        "criticality": {
-          "type": "string",
-          "enum": ["low", "medium", "high"]
-        },
-        "contacts": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": ["name"],
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "phone": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "fail_comments": {
-          "type": "string"
-        },
-        "relaunchable": {
-          "type": "boolean"
-        },
-        "input_keys": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "keywords": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "max_expected_time": {
-          "type": "string"
-        }
       }
     }
   }
