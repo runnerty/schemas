@@ -9,7 +9,9 @@
           "description": "Notifications at the start of the chain",
           "items": {
             "type": "object",
-            "required": ["id"],
+            "required": [
+              "id"
+            ],
             "properties": {
               "id": {
                 "type": "string"
@@ -22,7 +24,9 @@
           "description": "Notifications at the end of the chain",
           "items": {
             "type": "object",
-            "required": ["id"],
+            "required": [
+              "id"
+            ],
             "properties": {
               "id": {
                 "type": "string"
@@ -35,7 +39,9 @@
           "description": "Notifications when the chain fails",
           "items": {
             "type": "object",
-            "required": ["id"],
+            "required": [
+              "id"
+            ],
             "properties": {
               "id": {
                 "type": "string"
@@ -48,7 +54,9 @@
           "description": "Notifications when the chain retry",
           "items": {
             "type": "object",
-            "required": ["id"],
+            "required": [
+              "id"
+            ],
             "properties": {
               "id": {
                 "type": "string"
@@ -61,7 +69,9 @@
           "description": "Notifications when waiting for dependency with another chain",
           "items": {
             "type": "object",
-            "required": ["id"],
+            "required": [
+              "id"
+            ],
             "properties": {
               "id": {
                 "type": "string"
@@ -73,7 +83,11 @@
     }
   },
   "type": "object",
-  "required": ["id", "name", "processes"],
+  "required": [
+    "id",
+    "name",
+    "processes"
+  ],
   "properties": {
     "id": {
       "type": "string",
@@ -103,7 +117,10 @@
       "description": "For use in iterable chains, default false. When a process within the chain fail it stops the following cycles of the iterable chain"
     },
     "input": {
-      "type": ["array", "string"],
+      "type": [
+        "array",
+        "string"
+      ],
       "description": "Input data mapping interface"
     },
     "custom_values": {
@@ -115,7 +132,10 @@
       "description": "Number of retries before failing"
     },
     "retry_delay": {
-      "type": ["number", "string"],
+      "type": [
+        "number",
+        "string"
+      ],
       "description": "Delay time between each retry"
     },
     "triggers": {
@@ -154,20 +174,29 @@
         {
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "chain_id": {
-                "type": "string"
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "chain_id": {
+                    "type": "string"
+                  },
+                  "process_id": {
+                    "type": "string"
+                  }
+                }
               },
-              "process_id": {
+              {
                 "type": "string"
               }
-            }
+            ]
           }
         }
       ]
     },
-    "notifications": { "$ref": "#/definitions/notifications_chain" },
+    "notifications": {
+      "$ref": "#/definitions/notifications_chain"
+    },
     "defaults_processes": {
       "type": "object",
       "description": "A set common defaults attributes for all proccesses of the chain",

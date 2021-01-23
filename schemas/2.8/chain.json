@@ -154,15 +154,22 @@
         {
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "chain_id": {
-                "type": "string"
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "chain_id": {
+                    "type": "string"
+                  },
+                  "process_id": {
+                    "type": "string"
+                  }
+                }
               },
-              "process_id": {
+              {
                 "type": "string"
               }
-            }
+            ]
           }
         }
       ]
