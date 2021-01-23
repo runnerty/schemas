@@ -149,8 +149,34 @@
       "description": "if it is already in the queue, it is not included in the queue again. Default true. False if iterable is true."
     },
     "depends_chains": {
-      "type": ["array", "object"],
-      "description": "Declaration of dependencies with other chains"
+      "description": "Declaration of dependencies with other chains",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "chain_id": {
+              "type": "string"
+            },
+            "process_id": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "chain_id": {
+                "type": "string"
+              },
+              "process_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
     },
     "notifications": { "$ref": "#/definitions/notifications_chain" },
     "defaults_processes": {
