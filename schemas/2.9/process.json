@@ -245,6 +245,19 @@
         }
       }
     },
+    "output_iterable": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "PROCESS_EXEC_DATA_OUTPUT"
+          ]
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
     "notifications": { "$ref": "#/definitions/notifications_process" }
   }
 }
