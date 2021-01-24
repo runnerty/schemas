@@ -27,6 +27,10 @@
         }
       }
     },
+    "output_iterable": {
+      "type": ["string"],
+      "enum" : ["PROCESS_EXEC_DATA_OUTPUT", null]
+    },
     "output_process": {
       "type": "array",
       "items": {
