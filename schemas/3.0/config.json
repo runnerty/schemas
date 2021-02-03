@@ -365,6 +365,12 @@
             "syncPlan": {
               "type": "boolean"
             },
+            "waitForConnection": {
+              "type": "boolean"
+            },
+            "connectionTimeout": {
+              "type": "number"
+            },
             "debug": {
               "type": "boolean"
             }
