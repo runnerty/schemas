@@ -78,6 +78,21 @@
               }
             }
           }
+        },
+        "on_queue": {
+          "type": "array",
+          "description": "Notifications when queued",
+          "items": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     }
