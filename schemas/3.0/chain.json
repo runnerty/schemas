@@ -262,7 +262,7 @@
         "relaunchable": {
           "type": "boolean"
         },
-        "extraId": {
+        "extra_id": {
           "type": "string"
         },
         "keywords": {
