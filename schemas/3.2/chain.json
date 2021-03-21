@@ -1,0 +1,300 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "notifications_chain": {
+      "type": "object",
+      "properties": {
+        "on_start": {
+          "type": "array",
+          "description": "Notifications at the start of the chain",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_end": {
+          "type": "array",
+          "description": "Notifications at the end of the chain",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_fail": {
+          "type": "array",
+          "description": "Notifications when the chain fails",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_retry": {
+          "type": "array",
+          "description": "Notifications when the chain retry",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_waiting_dependencies": {
+          "type": "array",
+          "description": "Notifications when waiting for dependency with another chain",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_queue": {
+          "type": "array",
+          "description": "Notifications when queued",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": ["id", "name", "processes"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the chain"
+    },
+    "name": {
+      "type": "string",
+      "description": "Identifying name of the chain"
+    },
+    "namespace": {
+      "type": "string"
+    },
+    "execId": {
+      "type": "string"
+    },
+    "queue": {
+      "type": "string",
+      "description": "Queue identifier to subscribe to the chain"
+    },
+    "priority": {
+      "type": "number",
+      "description": "Chain priority"
+    },
+    "disable": {
+      "type": "boolean",
+      "description": "You can enable and disable a chain with this flag"
+    },
+    "abort_iteration_serie_on_error": {
+      "type": "boolean",
+      "description": "For use in iterable chains, default false. When a process within the chain fail it stops the following cycles of the iterable chain"
+    },
+    "input": {
+      "type": ["array", "string"],
+      "description": "Input data mapping interface"
+    },
+    "custom_values": {
+      "type": "object",
+      "description": "Custom data (can be overwritten on command line)"
+    },
+    "retries": {
+      "type": "number",
+      "description": "Number of retries before failing"
+    },
+    "retry_delay": {
+      "type": ["number", "string"],
+      "description": "Delay time between each retry"
+    },
+    "triggers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "calendars": {
+            "type": "object",
+            "properties": {
+              "allow": {
+                "type": "string"
+              },
+              "disallow": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "iterable": {
+      "type": "string",
+      "enum": ["serie", "parallel"]
+    },
+    "ignore_on_concurrence": {
+      "type": "boolean",
+      "description": "if it is already in the queue, it is not included in the queue again. Default true. False if iterable is true."
+    },
+    "depends_chains": {
+      "description": "Declaration of dependencies with other chains",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "chain_id": {
+              "type": "string"
+            },
+            "process_id": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "chain_id": {
+                    "type": "string"
+                  },
+                  "process_id": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "type": "string"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "notifications": {
+      "$ref": "#/definitions/notifications_chain"
+    },
+    "defaults_processes": {
+      "type": "object",
+      "description": "A set common defaults attributes for all proccesses of the chain",
+      "properties": {
+        "notifications": {
+          "$ref": "./process.json#/definitions/notifications_process"
+        },
+        "chain_action_on_fail": {
+          "$ref": "./process.json#/definitions/chain_action_on_fail_process"
+        },
+        "ignore_in_final_chain_status": {
+          "type": "boolean"
+        },
+        "output": {
+          "$ref": "./process.json#/definitions/output_process"
+        }
+      }
+    },
+    "runnerty.io": {
+      "type": "object",
+      "description": "Chain configuration for runnerty.io",
+      "properties": {
+        "remoteControl": {
+          "type": "boolean"
+        },
+        "sync": {
+          "type": "object",
+          "properties": {
+            "events": {
+              "type": "boolean"
+            },
+            "chain": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "processes": {
+      "type": "array",
+      "items": {
+        "$ref": "./process.json"
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        },
+        "criticality": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "contacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "fail_comments": {
+          "type": "string"
+        },
+        "relaunchable": {
+          "type": "boolean"
+        },
+        "extra_id": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "max_expected_time": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
