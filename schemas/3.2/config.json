@@ -400,7 +400,7 @@
           "type": "object",
           "properties": {
             "notifications": {
-              "$ref": "chainSchema#/definitions/notifications_chain"
+              "$ref": "./chain.json#/definitions/notifications_chain"
             }
           }
         },
