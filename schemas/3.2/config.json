@@ -395,26 +395,30 @@
     },
     "defaults": {
       "type": "object",
-      "chain": {
-        "type": "object",
-        "notifications": {
-          "$ref": "chainSchema#/definitions/notifications_chain"
-        }
-      },
-      "process": {
-        "type": "object",
-        "properties": {
-          "notifications": {
-            "$ref": "./process.json#/definitions/notifications_process"
-          },
-          "chain_action_on_fail": {
-            "$ref": "./process.json#/definitions/chain_action_on_fail_process"
-          },
-          "ignore_in_final_chain_status": {
-            "type": "boolean"
-          },
-          "output": {
-            "$ref": "./process.json#/definitions/output_process"
+      "properties": {
+        "chain": {
+          "type": "object",
+          "properties": {
+            "notifications": {
+              "$ref": "chainSchema#/definitions/notifications_chain"
+            }
+          }
+        },
+        "process": {
+          "type": "object",
+          "properties": {
+            "notifications": {
+              "$ref": "./process.json#/definitions/notifications_process"
+            },
+            "chain_action_on_fail": {
+              "$ref": "./process.json#/definitions/chain_action_on_fail_process"
+            },
+            "ignore_in_final_chain_status": {
+              "type": "boolean"
+            },
+            "output": {
+              "$ref": "./process.json#/definitions/output_process"
+            }
           }
         }
       }
