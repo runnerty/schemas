@@ -1,9 +1,12 @@
 {
-  "$schema": "../src/process-2.6.json",
+  "$schema": "../schemas/3.2/process.json",
   "id": "ID_PROCESS",
   "name": "NAME",
   "exec": {
     "id": "TEST",
     "command": ""
+  },
+  "depends_process": {
+    "$and": []
   }
 }

@@ -15,8 +15,30 @@
           "items": {
             "$ref": "#/definitions/depend_process"
           }
+        },
+        "$end": {
+          "type": "string"
+        },
+        "$fail": {
+          "type": "string"
         }
       }
+    },
+    "depend_process_main": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/depend_process"
+          }
+        },
+        {
+          "$ref": "#/definitions/depend_process"
+        }
+      ]
     },
     "output_filter": {
       "type": "object",
@@ -39,10 +61,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "file_name",
-          "write"
-        ],
+        "required": ["file_name", "write"],
         "properties": {
           "file_name": {
             "type": "string"
@@ -70,9 +89,7 @@
           "description": "Notifications at the start of the process",
           "items": {
             "type": "object",
-            "required": [
-              "id"
-            ],
+            "required": ["id"],
             "properties": {
               "id": {
                 "type": "string"
@@ -85,9 +102,7 @@
           "description": "Notifications at the end of the process",
           "items": {
             "type": "object",
-            "required": [
-              "id"
-            ],
+            "required": ["id"],
             "properties": {
               "id": {
                 "type": "string"
@@ -100,9 +115,7 @@
           "items": {
             "type": "object",
             "description": "Notifications when the process fails",
-            "required": [
-              "id"
-            ],
+            "required": ["id"],
             "properties": {
               "id": {
                 "type": "string"
@@ -115,9 +128,7 @@
           "description": "Notifications when the process retry",
           "items": {
             "type": "object",
-            "required": [
-              "id"
-            ],
+            "required": ["id"],
             "properties": {
               "id": {
                 "type": "string"
@@ -130,9 +141,7 @@
           "description": "Notifications when the process is added to the queue",
           "items": {
             "type": "object",
-            "required": [
-              "id"
-            ],
+            "required": ["id"],
             "properties": {
               "id": {
                 "type": "string"
@@ -145,9 +154,7 @@
           "description": "Notifications when the process exceeds the maximum time for execution",
           "items": {
             "type": "object",
-            "required": [
-              "id"
-            ],
+            "required": ["id"],
             "properties": {
               "id": {
                 "type": "string"
@@ -160,9 +167,7 @@
           "description": "Notifications when waiting for dependency with another process",
           "items": {
             "type": "object",
-            "required": [
-              "id"
-            ],
+            "required": ["id"],
             "properties": {
               "id": {
                 "type": "string"
@@ -177,27 +182,16 @@
         {
           "type": "string",
           "description": "Action to be performed by the chain in case the process fails",
-          "enum": [
-            "abort",
-            "continue",
-            "retry"
-          ]
+          "enum": ["abort", "continue", "retry"]
         },
         {
           "type": "object",
           "description": "Action to be performed by the chain in case the process fails",
-          "required": [
-            "action"
-          ],
+          "required": ["action"],
           "properties": {
             "action": {
               "type": "string",
-              "enum": [
-                "abort",
-                "continue",
-                "retry",
-                "end"
-              ]
+              "enum": ["abort", "continue", "retry", "end"]
             }
           }
         }
@@ -205,11 +199,7 @@
     }
   },
   "type": "object",
-  "required": [
-    "id",
-    "name",
-    "exec"
-  ],
+  "required": ["id", "name", "exec"],
   "properties": {
     "id": {
       "type": "string"
@@ -218,20 +208,7 @@
       "type": "string"
     },
     "depends_process": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        {
-          "$ref": "#/definitions/depend_process"
-        }
-      ]
+      "$ref": "#/definitions/depend_process_main"
     },
     "queue": {
       "type": "string"
@@ -241,9 +218,7 @@
     },
     "exec": {
       "type": "object",
-      "required": [
-        "id"
-      ],
+      "required": ["id"],
       "properties": {
         "id": {
           "type": "string"
@@ -260,28 +235,20 @@
       "type": "number"
     },
     "retry_delay": {
-      "type": [
-        "number",
-        "string"
-      ]
+      "type": ["number", "string"]
     },
     "notificate_only_last_fail": {
       "type": "boolean"
     },
     "timeout": {
       "type": "object",
-      "required": [
-        "delay"
-      ],
+      "required": ["delay"],
       "properties": {
         "action": {
           "type": "string"
         },
         "delay": {
-          "type": [
-            "number",
-            "string"
-          ]
+          "type": ["number", "string"]
         }
       }
     },
@@ -314,11 +281,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "key",
-          "name",
-          "value"
-        ],
+        "required": ["key", "name", "value"],
         "properties": {
           "key": {
             "type": "string"
@@ -336,9 +299,7 @@
       "anyOf": [
         {
           "type": "string",
-          "enum": [
-            "PROCESS_EXEC_DATA_OUTPUT"
-          ]
+          "enum": ["PROCESS_EXEC_DATA_OUTPUT"]
         },
         {
           "type": "string"
