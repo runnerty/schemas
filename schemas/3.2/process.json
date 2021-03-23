@@ -32,6 +32,12 @@
         {
           "type": "array",
           "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "array",
+          "items": {
             "$ref": "#/definitions/depend_process"
           }
         },
